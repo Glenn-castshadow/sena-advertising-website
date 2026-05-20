@@ -945,6 +945,90 @@ section { padding: 6rem 0; }
   .video-grid { grid-template-columns: 1fr; }
 }
 
+/* ── Project Gallery ── */
+.project-block {
+  margin-bottom: 4rem;
+}
+.project-block:last-child { margin-bottom: 0; }
+
+.project-block-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.project-client {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.project-type {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.project-imgs {
+  display: grid;
+  gap: 1.5px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.project-imgs img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Genesis: two portrait posters on top, wide lineup below */
+.project-imgs--genesis {
+  grid-template-columns: 1fr 1fr;
+}
+.project-imgs--genesis .portrait {
+  height: 460px;
+}
+.project-imgs--genesis .wide {
+  grid-column: 1 / -1;
+  height: 320px;
+}
+
+/* Billboards: two landscape shots side by side */
+.project-imgs--2col {
+  grid-template-columns: 1fr 1fr;
+}
+.project-imgs--2col img {
+  height: 280px;
+}
+
+/* Subaru POS: 2×2 grid */
+.project-imgs--2x2 {
+  grid-template-columns: 1fr 1fr;
+}
+.project-imgs--2x2 img {
+  height: 260px;
+}
+
+@media (max-width: 768px) {
+  .project-imgs--genesis { grid-template-columns: 1fr; }
+  .project-imgs--genesis .portrait { height: 320px; }
+  .project-imgs--genesis .wide { grid-column: auto; height: 220px; }
+  .project-imgs--2col,
+  .project-imgs--2x2 { grid-template-columns: 1fr; }
+  .project-block-header { flex-direction: column; gap: 0.4rem; }
+}
+
 /* ── Utilities ── */
 .text-accent { color: var(--accent); }
 .mt-2 { margin-top: 2rem; }
