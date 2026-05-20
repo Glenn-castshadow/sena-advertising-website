@@ -52,6 +52,50 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+// Lightbox for project gallery images
+(function () {
+  const imgs = document.querySelectorAll('.project-imgs img');
+  if (!imgs.length) return;
+
+  // Build overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'lightbox';
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-modal', 'true');
+  overlay.innerHTML =
+    '<button class="lightbox-close" aria-label="Close image">&times;</button>' +
+    '<img class="lightbox-img" src="" alt="">';
+  document.body.appendChild(overlay);
+
+  const lbImg = overlay.querySelector('.lightbox-img');
+
+  function openLightbox(src, alt) {
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    overlay.style.display = 'flex';
+    requestAnimationFrame(() => overlay.classList.add('active'));
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    overlay.classList.remove('active');
+    setTimeout(() => {
+      overlay.style.display = 'none';
+      lbImg.src = '';
+      document.body.style.overflow = '';
+    }, 280);
+  }
+
+  imgs.forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => openLightbox(img.src, img.alt));
+  });
+
+  overlay.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+})();
+
 // Contact form — basic client-side feedback
 const form = document.querySelector('.contact-form');
 if (form) {
