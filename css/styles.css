@@ -965,6 +965,8 @@ section { padding: 6rem 0; }
   :root { --nav-h: 64px; }
   section { padding: 4rem 0; }
 
+  .nav-logo-img { height: 48px; }
+
   .nav-links {
     display: none;
     position: fixed;
