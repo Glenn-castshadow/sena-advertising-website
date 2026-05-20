@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta 
+    name="viewport" 
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Thank You | SENA Advertising
+  </title>
+
+  <meta 
+    name="description" 
+    content="Thank you for contacting SENA Advertising."
+  >
+
+  <style>
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #111111;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .thank-you-container {
+      max-width: 700px;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #cccccc;
+      margin-bottom: 20px;
+    }
+
+    .countdown {
+      font-size: 1rem;
+      color: #999999;
+      margin-top: 30px;
+    }
+
+    .home-link {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 14px 28px;
+      background: #ffffff;
+      color: #111111;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .home-link:hover {
+      background: #cccccc;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="thank-you-container">
+
+    <h1>
+      Thank You
+    </h1>
+
+    <p>
+      Your message has been successfully sent to SENA Advertising.
+    </p>
+
+    <p>
+      A member of our team will contact you shortly regarding your project or inquiry.
+    </p>
+
+    <a 
+      href="file://///Gato_NAS/home/Dropbox-Files/client files/Sena Advertising/index.html" 
+      class="home-link"
+    >
+      Return to Home
+    </a>
+
+    <div class="countdown">
+
+      Redirecting to the homepage in 
+      <span id="timer">10</span> seconds...
+
+    </div>
+
+  </div>
+
+  <script>
+
+    let timeLeft = 10;
+
+    const timerElement = document.getElementById("timer");
+
+    const countdown = setInterval(function () {
+
+      timeLeft--;
+
+      timerElement.textContent = timeLeft;
+
+      if (timeLeft <= 0) {
+
+        clearInterval(countdown);
+
+        window.location.href = "index.html";
+
+      }
+
+    }, 1000);
+
+  </script>
+
+</body>
+
+</html>
