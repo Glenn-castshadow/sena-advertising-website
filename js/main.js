@@ -180,21 +180,4 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 })();
 
-// Contact form — basic client-side feedback
-const form = document.querySelector('.contact-form');
-if (form) {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]');
-    const original = btn.textContent;
-    btn.textContent = 'Message Sent!';
-    btn.disabled = true;
-    btn.style.background = '#2e7d52';
-    setTimeout(() => {
-      btn.textContent = original;
-      btn.disabled = false;
-      btn.style.background = '';
-      form.reset();
-    }, 4000);
-  });
-}
+// Contact form — submitted natively to Formspree (redirect handled by _next)
