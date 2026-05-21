@@ -180,4 +180,34 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 })();
 
-// Contact form — submitted natively to Formspree (redirect handled by _next)
+// Contact form — submit via fetch, redirect to thank-you page on success
+const form = document.querySelector('.contact-form');
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    const original = btn.textContent;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        window.location.href = 'thank-you.html';
+      } else {
+        btn.textContent = 'Something went wrong — please try again';
+        btn.disabled = false;
+        btn.style.background = '#c0392b';
+      }
+    } catch (err) {
+      btn.textContent = 'Something went wrong — please try again';
+      btn.disabled = false;
+      btn.style.background = '#c0392b';
+    }
+  });
+}
