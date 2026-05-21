@@ -899,7 +899,7 @@ section { padding: 6rem 0; }
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: brightness(0.5);
+  filter: brightness(0.75);
   transition: filter 0.35s ease;
 }
 .video-item:hover .video-thumb-img { filter: brightness(1); }
