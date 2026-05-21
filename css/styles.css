@@ -899,9 +899,10 @@ section { padding: 6rem 0; }
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: opacity 0.3s;
+  filter: brightness(0.5);
+  transition: filter 0.35s ease;
 }
-.video-item:hover .video-thumb-img { opacity: 0.85; }
+.video-item:hover .video-thumb-img { filter: brightness(1); }
 
 .video-thumb::before {
   content: '';
