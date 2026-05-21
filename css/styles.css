@@ -892,12 +892,24 @@ section { padding: 6rem 0; }
   overflow: hidden;
 }
 
+.video-thumb-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s;
+}
+.video-item:hover .video-thumb-img { opacity: 0.85; }
+
 .video-thumb::before {
   content: '';
   position: absolute;
   inset: 0;
   background: radial-gradient(ellipse at center, rgba(203,80,28,0.08) 0%, transparent 70%);
   transition: opacity 0.3s;
+  z-index: 1;
 }
 .video-item:hover .video-thumb::before { opacity: 2; }
 
@@ -911,7 +923,7 @@ section { padding: 6rem 0; }
   justify-content: center;
   transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 .video-item:hover .video-play-btn {
   transform: scale(1.12);
