@@ -186,25 +186,32 @@ if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
-    const original = btn.textContent;
     btn.textContent = 'Sending…';
     btn.disabled = true;
+
+    const data = new URLSearchParams(new FormData(form));
 
     try {
       const response = await fetch(form.action, {
         method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
+        body: data,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json'
+        }
       });
 
       if (response.ok) {
         window.location.href = 'thank-you.html';
       } else {
+        const json = await response.json().catch(() => ({}));
+        console.error('Formspree error:', response.status, json);
         btn.textContent = 'Something went wrong — please try again';
         btn.disabled = false;
         btn.style.background = '#c0392b';
       }
     } catch (err) {
+      console.error('Form fetch error:', err);
       btn.textContent = 'Something went wrong — please try again';
       btn.disabled = false;
       btn.style.background = '#c0392b';
