@@ -229,6 +229,14 @@ section { padding: 6rem 0; }
 }
 .hero-title .accent { color: var(--accent); }
 
+.hero-title-intro {
+  display: block;
+  font-size: clamp(1.2rem, 2.8vw, 2.8rem);
+  line-height: 1.1;
+  margin-bottom: 0.05em;
+  letter-spacing: 0.04em;
+}
+
 .hero-desc {
   font-size: 1.1rem;
   color: var(--text-muted);
