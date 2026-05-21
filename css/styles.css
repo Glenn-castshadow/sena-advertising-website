@@ -1089,6 +1089,104 @@ section { padding: 6rem 0; }
   .radio-grid { grid-template-columns: 1fr; }
 }
 
+/* ── Bio Modal ── */
+.bio-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  z-index: 2100;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 4rem 2rem;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  overflow-y: auto;
+}
+.bio-modal.active { opacity: 1; }
+
+.bio-modal-inner {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  max-width: 760px;
+  width: 100%;
+  padding: 3rem;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.28s ease;
+}
+.bio-modal.active .bio-modal-inner { transform: translateY(0); }
+
+.bio-modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0.25rem;
+}
+.bio-modal-close:hover { color: var(--text); }
+
+.bio-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.bio-modal-photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid var(--border);
+}
+.bio-modal-name {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin-bottom: 0.35rem;
+}
+.bio-modal-role {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.bio-modal-body p {
+  color: var(--text-muted);
+  font-size: 0.93rem;
+  line-height: 1.8;
+  margin-bottom: 1.1rem;
+}
+.bio-modal-body p:last-child { margin-bottom: 0; }
+
+.team-card { cursor: pointer; }
+.team-card-cta {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 1.25rem;
+  display: block;
+  transition: color 0.2s;
+}
+.team-card:hover .team-card-cta { color: var(--accent-hover); }
+
+@media (max-width: 600px) {
+  .bio-modal { padding: 2rem 1rem; }
+  .bio-modal-inner { padding: 2rem 1.25rem; }
+  .bio-modal-header { flex-direction: column; text-align: center; }
+}
+
 /* ── Lightbox ── */
 .lightbox {
   display: none;

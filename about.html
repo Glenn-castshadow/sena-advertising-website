@@ -80,7 +80,7 @@
       </div>
       <div class="team-grid">
 
-        <div class="team-card fade-in">
+        <div class="team-card fade-in" data-person="scott">
           <img src="images/scott_500px_round-tan.png" alt="Scott Sena" class="team-photo">
           <h3>Scott Sena</h3>
           <div class="team-title">President</div>
@@ -90,9 +90,10 @@
             trade publications including an ADWEEK Magazine feature. His leadership drives the
             agency's creative direction and client partnerships.
           </p>
+          <span class="team-card-cta">Read Full Bio →</span>
         </div>
 
-        <div class="team-card fade-in fade-in-d1">
+        <div class="team-card fade-in fade-in-d1" data-person="tom">
           <img src="images/tom_500px_round-tan.png" alt="Tom Signaigo" class="team-photo">
           <h3>Tom Signaigo</h3>
           <div class="team-title">Director of Operations</div>
@@ -101,9 +102,10 @@
             set enables him to lead innovation and help companies advance their marketing goals
             with clarity and efficiency. Tom ensures every project runs on time and on strategy.
           </p>
+          <span class="team-card-cta">Read Full Bio →</span>
         </div>
 
-        <div class="team-card fade-in fade-in-d2">
+        <div class="team-card fade-in fade-in-d2" data-person="glenn">
           <img src="images/glenn_500px_round-tan.png" alt="Glenn Capps" class="team-photo">
           <h3>Glenn Capps</h3>
           <div class="team-title">Lead Designer / Flame Artist</div>
@@ -113,6 +115,7 @@
             platforms, online video, email marketing, and print production — bringing
             every visual idea to life with precision and artistry.
           </p>
+          <span class="team-card-cta">Read Full Bio →</span>
         </div>
 
       </div>
@@ -202,6 +205,21 @@
       </div>
     </div>
   </footer>
+
+  <!-- Bio Modal -->
+  <div id="bio-modal" class="bio-modal" role="dialog" aria-modal="true" aria-label="Team biography">
+    <div class="bio-modal-inner">
+      <button class="bio-modal-close" aria-label="Close">&times;</button>
+      <div class="bio-modal-header">
+        <img class="bio-modal-photo" src="" alt="">
+        <div>
+          <h2 class="bio-modal-name"></h2>
+          <div class="bio-modal-role"></div>
+        </div>
+      </div>
+      <div class="bio-modal-body"></div>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
