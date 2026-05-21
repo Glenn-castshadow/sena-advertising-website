@@ -909,7 +909,6 @@ section { padding: 6rem 0; }
   inset: 0;
   background: radial-gradient(ellipse at center, rgba(203,80,28,0.08) 0%, transparent 70%);
   transition: opacity 0.3s;
-  z-index: 1;
 }
 .video-item:hover .video-thumb::before { opacity: 2; }
 
