@@ -34,7 +34,7 @@
       font-size: 10px;
       letter-spacing: .18em;
       text-transform: uppercase;
-      color: #666;
+      color: #aaa;
     }
 
     .main {
@@ -82,7 +82,7 @@
 
     .error-msg {
       display: none;
-      font-size: 11.5px;
+      font-size: 11px;
       color: #e53e3e;
       margin-top: 5px;
     }
@@ -108,7 +108,7 @@
       overflow: hidden;
     }
 
-    #qr-preview svg { display: block; }
+    .qr-box svg { display: block; }
 
     .qr-placeholder {
       font-size: 12px;
@@ -127,7 +127,7 @@
     .divider {
       border: none;
       border-top: 1px solid #eee;
-      margin: 4px 0 20px;
+      margin: 0 0 20px;
     }
 
     .export-row { display: flex; gap: 10px; }
@@ -169,7 +169,7 @@
     .card-footer {
       margin-top: 16px;
       text-align: center;
-      font-size: 10.5px;
+      font-size: 11px;
       color: #bbb;
     }
 
@@ -196,9 +196,48 @@
 
   <main class="main">
     <div class="card">
-      <p style="color:#bbb;text-align:center;padding:20px 0;">Scaffold — content coming</p>
+      <label class="field-label" for="url-input">Vehicle URL</label>
+      <input
+        type="url"
+        id="url-input"
+        class="url-input"
+        placeholder="https://sunroadauto.com/inventory/…"
+        autocomplete="off"
+        spellcheck="false"
+      >
+      <div class="error-msg" id="error-msg">Please enter a valid URL</div>
     </div>
   </main>
 
+  <script>
+    const urlInput = document.getElementById('url-input');
+    const errorMsg = document.getElementById('error-msg');
+
+    function isValidUrl(str) {
+      if (!str) return false;
+      try {
+        const url = new URL(str);
+        return url.protocol === 'http:' || url.protocol === 'https:';
+      } catch {
+        return false;
+      }
+    }
+
+    function setInputState(value) {
+      const hasValue = value.length > 0;
+      const valid = isValidUrl(value);
+      urlInput.classList.toggle('error', hasValue && !valid);
+      errorMsg.classList.toggle('visible', hasValue && !valid);
+    }
+
+    let debounceTimer;
+    urlInput.addEventListener('input', () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        const val = urlInput.value.trim();
+        setInputState(val);
+      }, 300);
+    });
+  </script>
 </body>
 </html>
