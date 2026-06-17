@@ -217,6 +217,19 @@
       </div>
 
       <hr class="divider">
+
+      <div class="export-row">
+        <button class="btn btn-png" id="btn-png" disabled>
+          <span class="btn-icon">&#8595;</span>
+          <span class="btn-label">Export PNG<span class="btn-sub">900 &times; 900 px</span></span>
+        </button>
+        <button class="btn btn-svg" id="btn-svg" disabled>
+          <span class="btn-icon">&#8595;</span>
+          <span class="btn-label">Export SVG<span class="btn-sub">Scalable vector</span></span>
+        </button>
+      </div>
+
+      <div class="card-footer">QR code updates live as you type</div>
     </div>
   </main>
 
@@ -264,8 +277,56 @@
     });
     let previewAppended = false;
 
+    const btnPng = document.getElementById('btn-png');
+    const btnSvg = document.getElementById('btn-svg');
+
+    const EXPORT_CONFIG = {
+      dotsOptions: { color: '#000000', type: 'square' },
+      backgroundOptions: { color: '#ffffff' },
+      qrOptions: { errorCorrectionLevel: 'H' }
+    };
+
+    function exportPng() {
+      const url = urlInput.value.trim();
+      if (!isValidUrl(url)) return;
+      try {
+        new QRCodeStyling({
+          width: 900, height: 900,
+          type: 'canvas',
+          data: url,
+          margin: 28,
+          ...EXPORT_CONFIG
+        }).download({ name: 'qr-code', extension: 'png' });
+      } catch (e) {
+        alert('PNG export failed. Please try again.');
+      }
+    }
+
+    function exportSvg() {
+      const url = urlInput.value.trim();
+      if (!isValidUrl(url)) return;
+      try {
+        new QRCodeStyling({
+          width: 900, height: 900,
+          type: 'svg',
+          data: url,
+          margin: 28,
+          ...EXPORT_CONFIG
+        }).download({ name: 'qr-code', extension: 'svg' });
+      } catch (e) {
+        alert('SVG export failed. Please try again.');
+      }
+    }
+
+    btnPng.addEventListener('click', exportPng);
+    btnSvg.addEventListener('click', exportSvg);
+
     function updatePreview(url) {
       const valid = isValidUrl(url);
+
+      btnPng.disabled = !valid;
+      btnSvg.disabled = !valid;
+
       if (valid) {
         if (!previewAppended) {
           previewQR.append(qrPreview);
