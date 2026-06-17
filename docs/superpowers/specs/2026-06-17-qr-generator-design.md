@@ -95,8 +95,10 @@ Both export buttons are disabled (visually grayed) until a valid URL has been en
 
 | Format | Dimensions | Resolution | Use |
 |---|---|---|---|
-| PNG | 900 × 900 px | 300 DPI equivalent | Print — vehicle addendum stickers |
+| PNG | 900 × 900 px | 300 DPI equivalent* | Print — vehicle addendum stickers |
 | SVG | Scalable | Vector | Digital / large-format print |
+
+*Browser canvas export does not embed DPI metadata — the file will read as 72 DPI in Photoshop/Illustrator. When placing in print design software, set the image size to 3" × 3" manually. Pixel dimensions (900×900) are correct for 300 DPI output at that size.
 
 ---
 
