@@ -181,6 +181,7 @@
       line-height: 1.6;
     }
   </style>
+  <script src="https://unpkg.com/qr-code-styling@1.6.0-rc1/lib/qr-code-styling.js"></script>
 </head>
 <body>
 
@@ -206,10 +207,26 @@
         spellcheck="false"
       >
       <div class="error-msg" id="error-msg">Please enter a valid URL</div>
+
+      <div class="qr-area">
+        <div class="qr-box">
+          <div class="qr-placeholder" id="qr-placeholder">Enter a URL<br>to generate a QR code</div>
+          <div id="qr-preview" style="display:none"></div>
+        </div>
+        <div class="qr-meta">3&Prime; &times; 3&Prime; &nbsp;&middot;&nbsp; Print-ready &nbsp;&middot;&nbsp; Error correction: High</div>
+      </div>
+
+      <hr class="divider">
     </div>
   </main>
 
   <script>
+    if (typeof QRCodeStyling === 'undefined') {
+      document.querySelector('.card').innerHTML =
+        '<p class="lib-error">Failed to load QR library.<br>Please check your internet connection and reload.</p>';
+      throw new Error('QRCodeStyling not loaded');
+    }
+
     const urlInput = document.getElementById('url-input');
     const errorMsg = document.getElementById('error-msg');
 
@@ -231,11 +248,44 @@
     }
 
     let debounceTimer;
+
+    const qrPlaceholder = document.getElementById('qr-placeholder');
+    const qrPreview = document.getElementById('qr-preview');
+
+    const previewQR = new QRCodeStyling({
+      width: 160,
+      height: 160,
+      type: 'svg',
+      data: 'placeholder',
+      margin: 4,
+      dotsOptions: { color: '#000000', type: 'square' },
+      backgroundOptions: { color: '#ffffff' },
+      qrOptions: { errorCorrectionLevel: 'H' }
+    });
+    let previewAppended = false;
+
+    function updatePreview(url) {
+      const valid = isValidUrl(url);
+      if (valid) {
+        if (!previewAppended) {
+          previewQR.append(qrPreview);
+          previewAppended = true;
+        }
+        previewQR.update({ data: url });
+        qrPlaceholder.style.display = 'none';
+        qrPreview.style.display = 'block';
+      } else {
+        qrPlaceholder.style.display = '';
+        qrPreview.style.display = 'none';
+      }
+    }
+
     urlInput.addEventListener('input', () => {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
         const val = urlInput.value.trim();
         setInputState(val);
+        updatePreview(val);
       }, 300);
     });
   </script>
