@@ -206,7 +206,7 @@
         autocomplete="off"
         spellcheck="false"
       >
-      <div class="error-msg" id="error-msg">Please enter a valid URL</div>
+      <div class="error-msg" id="error-msg" aria-live="polite">Please enter a valid URL</div>
 
       <div class="qr-area">
         <div class="qr-box">
@@ -332,7 +332,13 @@
           previewQR.append(qrPreview);
           previewAppended = true;
         }
-        previewQR.update({ data: url });
+        try {
+          previewQR.update({ data: url });
+        } catch (e) {
+          qrPlaceholder.style.display = '';
+          qrPreview.style.display = 'none';
+          return;
+        }
         qrPlaceholder.style.display = 'none';
         qrPreview.style.display = 'block';
       } else {
