@@ -27,8 +27,9 @@ graphics/           Design assets (source files)
 ## Design System
 
 - **Fonts**: Oswald (headlines, nav, labels) + Inter (body) — loaded from Google Fonts CDN
-- **Accent**: `#e84b2a` (orange-red), hover `#ff6040`
-- **Background**: `#0d0d0d` base, `#111111` surface, `#161616` cards
+- **Accent**: `--accent` `#c44c19` for fills and large text (hover `#b04413`); `--accent-text` `#f07a4a` for small accent text on dark backgrounds (hover `#f5895c`). Keeps WCAG AA contrast both ways.
+- **Background**: `#1e1e1e` base, `#252525` surface, `#2a2a2a` cards
+- **Images**: export web copies at ≤2400px long side as JPG (~80 quality); keep full-res sources out of `images/`
 - **CSS variables**: defined in `:root` at top of `styles.css`
 
 ## Key CSS Patterns
