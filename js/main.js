@@ -19,25 +19,41 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.querySelector('.nav-links');
 if (hamburger && navLinks) {
-  hamburger.addEventListener('click', () => {
-    const open = hamburger.classList.toggle('open');
+  const setMenu = (open) => {
+    hamburger.classList.toggle('open', open);
     navLinks.classList.toggle('open', open);
-    hamburger.setAttribute('aria-expanded', open);
-  });
+    hamburger.setAttribute('aria-expanded', String(open));
+    hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+  hamburger.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
   navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-    });
+    link.addEventListener('click', () => setMenu(false));
   });
-  // Close on outside click
+  // Close on outside click or Escape
   document.addEventListener('click', (e) => {
-    if (!nav.contains(e.target)) {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
+    if (!nav.contains(e.target)) setMenu(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+      setMenu(false);
+      hamburger.focus();
     }
   });
+}
+
+// Keep keyboard focus inside an open dialog
+function trapFocus(container, e) {
+  const focusable = container.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])');
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
 }
 
 // Fade-in on scroll
@@ -105,6 +121,8 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   const modalName  = modal.querySelector('.bio-modal-name');
   const modalRole  = modal.querySelector('.bio-modal-role');
   const modalBody  = modal.querySelector('.bio-modal-body');
+  const closeBtn   = modal.querySelector('.bio-modal-close');
+  let lastFocus = null;
 
   function openBio(key) {
     const data = bios[key];
@@ -114,26 +132,35 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     modalName.textContent = data.name;
     modalRole.textContent = data.role;
     modalBody.innerHTML = data.paragraphs.map(p => `<p>${p}</p>`).join('');
+    lastFocus = document.activeElement;
     modal.style.display = 'flex';
     requestAnimationFrame(() => modal.classList.add('active'));
     document.body.style.overflow = 'hidden';
+    closeBtn.focus();
   }
 
   function closeBio() {
+    if (!modal.classList.contains('active')) return;
     modal.classList.remove('active');
     setTimeout(() => {
       modal.style.display = 'none';
       document.body.style.overflow = '';
     }, 280);
+    if (lastFocus) lastFocus.focus();
   }
 
+  // The whole card is clickable; the CTA button inside it is the keyboard target
   document.querySelectorAll('.team-card[data-person]').forEach(card => {
     card.addEventListener('click', () => openBio(card.dataset.person));
   });
 
-  modal.querySelector('.bio-modal-close').addEventListener('click', closeBio);
+  closeBtn.addEventListener('click', closeBio);
   modal.addEventListener('click', e => { if (e.target === modal) closeBio(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBio(); });
+  document.addEventListener('keydown', e => {
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape') closeBio();
+    if (e.key === 'Tab') trapFocus(modal, e);
+  });
 })();
 
 // Lightbox for project gallery images
@@ -148,20 +175,27 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   overlay.setAttribute('aria-modal', 'true');
   overlay.innerHTML =
     '<button class="lightbox-close" aria-label="Close image">&times;</button>' +
-    '<img class="lightbox-img" src="" alt="">';
+    '<img class="lightbox-img" alt="">';
   document.body.appendChild(overlay);
 
   const lbImg = overlay.querySelector('.lightbox-img');
+  const lbClose = overlay.querySelector('.lightbox-close');
+  let lastFocus = null;
 
   function openLightbox(src, alt) {
+    lastFocus = document.activeElement;
     lbImg.src = src;
     lbImg.alt = alt || '';
+    overlay.setAttribute('aria-label', alt || 'Enlarged image');
     overlay.style.display = 'flex';
     requestAnimationFrame(() => overlay.classList.add('active'));
     document.body.style.overflow = 'hidden';
+    lbClose.focus();
   }
 
   function closeLightbox() {
+    if (!overlay.classList.contains('active')) return;
+    if (lastFocus) lastFocus.focus();
     overlay.classList.remove('active');
     setTimeout(() => {
       overlay.style.display = 'none';
@@ -172,12 +206,25 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
   imgs.forEach(img => {
     img.style.cursor = 'zoom-in';
+    img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', 'Enlarge image: ' + img.alt);
     img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    img.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(img.src, img.alt);
+      }
+    });
   });
 
-  overlay.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+  lbClose.addEventListener('click', closeLightbox);
   overlay.addEventListener('click', e => { if (e.target === overlay) closeLightbox(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!overlay.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'Tab') { e.preventDefault(); lbClose.focus(); }
+  });
 })();
 
 // Contact form — submit via fetch, redirect to thank-you page on success

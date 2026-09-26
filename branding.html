@@ -5,7 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Branding | SENA Advertising</title>
   <meta name="description" content="San Diego brand strategy and campaign development by SENA Advertising. We build identities that establish unique competitive positions across TV, radio, digital, outdoor, and point-of-sale.">
+  <link rel="canonical" href="https://www.senaadvertising.com/branding.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SENA Advertising">
+  <meta property="og:title" content="Branding | SENA Advertising">
+  <meta property="og:description" content="San Diego brand strategy and campaign development by SENA Advertising. We build identities that establish unique competitive positions across TV, radio, digital, outdoor, and point-of-sale.">
+  <meta property="og:url" content="https://www.senaadvertising.com/branding.html">
+  <meta property="og:image" content="https://www.senaadvertising.com/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#1e1e1e">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
   <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
@@ -13,7 +31,7 @@
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo"><img src="graphics/Sena_logo.svg" alt="SENA Advertising" class="nav-logo-img"></a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="creative.html">Creative</a></li>
@@ -21,7 +39,7 @@
         <li><a href="digital.html">Digital</a></li>
         <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
       </ul>
-      <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-controls="nav-links" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -69,7 +87,7 @@
   </section>
 
   <!-- 360 Strategy -->
-  <section style="background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <section class="section-alt">
     <div class="container">
       <div class="section-header fade-in">
         <span class="eyebrow">Strategy</span>
@@ -132,6 +150,44 @@
           <span class="channel-tag">Email Marketing</span>
           <span class="channel-tag">Print</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Work -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="eyebrow">Selected Work</span>
+        <h2>One Position, Every Touchpoint</h2>
+        <p>Brand ideas carried from the storefront to the showroom floor.</p>
+      </div>
+
+      <div class="project-block fade-in">
+        <div class="project-block-header">
+          <span class="project-client">Kearny Mesa Subaru</span>
+          <span class="project-type">San Diego's Dog Approved Dealer</span>
+        </div>
+        <div class="project-imgs project-imgs--2x2">
+          <img src="images/subaru-storefront.jpg" width="1800" height="1015" loading="lazy" decoding="async" alt="Kearny Mesa Subaru — Welcome to San Diego's Dog Approved Dealer storefront signage">
+          <img src="images/subaru-humane.jpg" width="1800" height="995" loading="lazy" decoding="async" alt="Kearny Mesa Subaru — Humane Society in-store banner">
+          <img src="images/subaru-pug.jpg" width="600" height="609" loading="lazy" decoding="async" alt="Kearny Mesa Subaru — We're So Happy You Came! door cling">
+          <img src="images/subaru-budget.jpg" width="1800" height="865" loading="lazy" decoding="async" alt="Kearny Mesa Subaru — Budget tent card point-of-sale">
+        </div>
+      </div>
+
+      <div class="project-block fade-in">
+        <div class="project-block-header">
+          <span class="project-client">Genesis of Kearny Mesa</span>
+          <span class="project-type">No One Knows Your Genesis Like We Do</span>
+        </div>
+        <div class="project-imgs project-imgs--genesis">
+          <img src="images/genesis-lineup.jpg" width="2400" height="1500" loading="lazy" decoding="async" alt="Genesis full lineup — No One Knows Your Genesis Like We Do" class="wide">
+        </div>
+      </div>
+
+      <div class="section-more fade-in">
+        <a href="creative.html" class="btn btn-outline">See More Work</a>
       </div>
     </div>
   </section>
