@@ -1,138 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta 
-    name="viewport" 
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>
-    Thank You | SENA Advertising
-  </title>
-
-  <meta 
-    name="description" 
-    content="Thank you for contacting SENA Advertising."
-  >
-
-  <style>
-
-    body {
-      margin: 0;
-      padding: 0;
-      background: #111111;
-      color: #ffffff;
-      font-family: Arial, Helvetica, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-    }
-
-    .thank-you-container {
-      max-width: 700px;
-      padding: 40px;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
-    }
-
-    p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: #cccccc;
-      margin-bottom: 20px;
-    }
-
-    .countdown {
-      font-size: 1rem;
-      color: #999999;
-      margin-top: 30px;
-    }
-
-    .home-link {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 14px 28px;
-      background: #ffffff;
-      color: #111111;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s ease;
-    }
-
-    .home-link:hover {
-      background: #cccccc;
-    }
-
-  </style>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You | SENA Advertising</title>
+  <meta name="description" content="Thank you for contacting SENA Advertising.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#1e1e1e">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
-
 <body>
 
-  <div class="thank-you-container">
-
-    <h1>
-      Thank You
-    </h1>
-
-    <p>
-      Your message has been successfully sent to SENA Advertising.
-    </p>
-
-    <p>
-      A member of our team will contact you shortly regarding your project or inquiry.
-    </p>
-
-    <a 
-      href="https://www.senaadvertising.com/" 
-      class="home-link"
-    >
-      Return to Home
-    </a>
-
-    <div class="countdown">
-
-      Redirecting to the homepage in 
-      <span id="timer">3</span> seconds...
-
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="graphics/Sena_logo.svg" alt="SENA Advertising" class="nav-logo-img"></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="creative.html">Creative</a></li>
+        <li><a href="branding.html">Branding</a></li>
+        <li><a href="digital.html">Digital</a></li>
+        <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+      </ul>
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-controls="nav-links" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </nav>
 
-  </div>
+  <!-- Confirmation -->
+  <section class="thanks">
+    <div class="container">
+      <span class="eyebrow">Message Received</span>
+      <h1>Thank You</h1>
+      <p class="subtitle">
+        Your message has been sent to SENA Advertising. A member of our team will
+        be in touch shortly about your project.
+      </p>
+      <p class="thanks-alt">
+        Need us sooner? Call or text <a href="tel:7608451304">760-845-1304</a>.
+      </p>
+      <div class="hero-actions">
+        <a href="creative.html" class="btn btn-primary">See Our Work</a>
+        <a href="index.html" class="btn btn-outline">Back to Home</a>
+      </div>
+    </div>
+  </section>
 
-  <script>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo"><img src="graphics/Sena_logo_no_services_v2.svg" alt="SENA Advertising" class="footer-logo-img"></a>
+          <p>Broadcast, digital, and brand creative from a senior team that stays involved from brief to final delivery.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="creative.html">Creative</a></li>
+            <li><a href="branding.html">Branding</a></li>
+            <li><a href="digital.html">Digital</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:7608451304">760-845-1304</a></li>
+            <li><a href="mailto:contact@senaadvertising.com">contact@senaadvertising.com</a></li>
+            <li>5111 Santa Fe St. Unit 219</li>
+            <li>San Diego, CA 92109</li>
+            <li>Mon – Fri, 10a – 5p PT</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 SENA Advertising. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-    let timeLeft = 3;
-
-    const timerElement = document.getElementById("timer");
-
-    const countdown = setInterval(function () {
-
-      timeLeft--;
-
-      timerElement.textContent = timeLeft;
-
-      if (timeLeft <= 0) {
-
-        clearInterval(countdown);
-
-        window.location.href = "index.html";
-
-      }
-
-    }, 1000);
-
-  </script>
-
+  <script src="js/main.js"></script>
 </body>
-
 </html>

@@ -5,7 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us | SENA Advertising</title>
   <meta name="description" content="Meet the SENA Advertising team. San Diego-based, award-winning professionals with decades of experience in broadcast production, brand strategy, and motion design.">
+  <link rel="canonical" href="https://www.senaadvertising.com/about.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SENA Advertising">
+  <meta property="og:title" content="About Us | SENA Advertising">
+  <meta property="og:description" content="Meet the SENA Advertising team. San Diego-based, award-winning professionals with decades of experience in broadcast production, brand strategy, and motion design.">
+  <meta property="og:url" content="https://www.senaadvertising.com/about.html">
+  <meta property="og:image" content="https://www.senaadvertising.com/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#1e1e1e">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
   <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
@@ -13,7 +31,7 @@
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo"><img src="graphics/Sena_logo.svg" alt="SENA Advertising" class="nav-logo-img"></a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="creative.html">Creative</a></li>
@@ -21,7 +39,7 @@
         <li><a href="digital.html">Digital</a></li>
         <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
       </ul>
-      <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-controls="nav-links" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -70,7 +88,7 @@
   </section>
 
   <!-- Team -->
-  <section style="background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <section class="section-alt">
     <div class="container">
       <div class="section-header center fade-in">
         <span class="eyebrow">Leadership</span>
@@ -89,7 +107,7 @@
             trade publications including an ADWEEK Magazine feature. His leadership drives the
             agency's creative direction and client partnerships.
           </p>
-          <span class="team-card-cta">Read Full Bio →</span>
+          <button type="button" class="team-card-cta" aria-label="Read Scott Sena's full bio">Read Full Bio →</button>
         </div>
 
         <div class="team-card fade-in fade-in-d1" data-person="tom">
@@ -101,7 +119,7 @@
             set enables him to lead innovation and help companies advance their marketing goals
             with clarity and efficiency. Tom ensures every project runs on time and on strategy.
           </p>
-          <span class="team-card-cta">Read Full Bio →</span>
+          <button type="button" class="team-card-cta" aria-label="Read Tom Signaigo's full bio">Read Full Bio →</button>
         </div>
 
         <div class="team-card fade-in fade-in-d2" data-person="glenn">
@@ -114,7 +132,7 @@
             platforms, online video, email marketing, and print production,
             bringing every visual idea to life with precision and artistry.
           </p>
-          <span class="team-card-cta">Read Full Bio →</span>
+          <button type="button" class="team-card-cta" aria-label="Read Glenn Capps's full bio">Read Full Bio →</button>
         </div>
 
       </div>
@@ -206,13 +224,13 @@
   </footer>
 
   <!-- Bio Modal -->
-  <div id="bio-modal" class="bio-modal" role="dialog" aria-modal="true" aria-label="Team biography">
+  <div id="bio-modal" class="bio-modal" role="dialog" aria-modal="true" aria-labelledby="bio-modal-name">
     <div class="bio-modal-inner">
       <button class="bio-modal-close" aria-label="Close">&times;</button>
       <div class="bio-modal-header">
-        <img class="bio-modal-photo" src="" alt="">
+        <img class="bio-modal-photo" alt="">
         <div>
-          <h2 class="bio-modal-name"></h2>
+          <h2 class="bio-modal-name" id="bio-modal-name"></h2>
           <div class="bio-modal-role"></div>
         </div>
       </div>

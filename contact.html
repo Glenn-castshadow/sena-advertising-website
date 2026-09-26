@@ -5,7 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us | SENA Advertising</title>
   <meta name="description" content="Contact SENA Advertising in San Diego. Have a campaign, product launch, or brand challenge? Send a few details and we'll identify the fastest path from idea to finished creative.">
+  <link rel="canonical" href="https://www.senaadvertising.com/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SENA Advertising">
+  <meta property="og:title" content="Contact Us | SENA Advertising">
+  <meta property="og:description" content="Contact SENA Advertising in San Diego. Have a campaign, product launch, or brand challenge? Send a few details and we'll identify the fastest path from idea to finished creative.">
+  <meta property="og:url" content="https://www.senaadvertising.com/contact.html">
+  <meta property="og:image" content="https://www.senaadvertising.com/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#1e1e1e">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
   <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "SENA Advertising",
+    "description": "San Diego advertising agency specializing in TV and radio commercial production, branding, and digital marketing.",
+    "url": "https://www.senaadvertising.com/",
+    "logo": "https://www.senaadvertising.com/graphics/Sena_logo.svg",
+    "image": "https://www.senaadvertising.com/images/og-image.jpg",
+    "telephone": "+1-760-845-1304",
+    "email": "contact@senaadvertising.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "5111 Santa Fe St. Unit 219",
+      "addressLocality": "San Diego",
+      "addressRegion": "CA",
+      "postalCode": "92109",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "10:00",
+        "closes": "17:00"
+      }
+    ],
+    "areaServed": "San Diego, CA"
+  }
+  </script>
 </head>
 <body>
 
@@ -13,7 +67,7 @@
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo"><img src="graphics/Sena_logo.svg" alt="SENA Advertising" class="nav-logo-img"></a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="creative.html">Creative</a></li>
@@ -21,7 +75,7 @@
         <li><a href="digital.html">Digital</a></li>
         <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
       </ul>
-      <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-controls="nav-links" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -47,8 +101,8 @@
         <!-- Contact Info -->
         <div class="fade-in">
           <span class="eyebrow">Reach Us</span>
-          <h2 style="font-size: clamp(1.6rem, 3vw, 2.25rem); margin-bottom: 1.25rem;">We'd Love to<br>Hear From You</h2>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2.5rem;">Not sure exactly what you need yet? That's fine.<br>A quick conversation is often the best starting point.</p>
+          <h2 class="contact-heading">We'd Love to<br>Hear From You</h2>
+          <p class="contact-intro">Not sure exactly what you need yet? That's fine.<br>A quick conversation is often the best starting point.</p>
 
           <div class="contact-detail">
             <div class="contact-detail-label">Phone / Text</div>
@@ -173,7 +227,6 @@
   </button>
 
 </form>
-        </div>
 
       </div>
     </div>
